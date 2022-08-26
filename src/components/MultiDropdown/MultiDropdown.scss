@@ -1,0 +1,41 @@
+.wrap {
+  position: relative;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.multi-down {
+  padding-left: 19px;
+  text-align: left;
+  font-size: 12px;
+  background: linear-gradient(98.81deg, #fff0f0 -0.82%, #ffdfdf 101.53%);
+  mix-blend-mode: normal;
+  border-radius: 7px;
+  height: 36px;
+  width: 100%;
+  outline: none;
+  border: 0;
+  &:focus {
+  }
+}
+
+.options {
+  position: absolute;
+  border-radius: 7px;
+  top: 40px;
+  width: 100%;
+  z-index: 1;
+  background: linear-gradient(98.81deg, #fff0f0 -0.82%, #ffdfdf 101.53%);
+
+  .option {
+    color: black;
+    z-index: 2;
+    border-radius: 7px;
+    padding-left: 19px;
+    line-height: 36px;
+    text-align: left;
+    height: 36px;
+    background: linear-gradient(98.81deg, #fff0f0 -0.82%, #ffdfdf 101.53%);
+  }
+}

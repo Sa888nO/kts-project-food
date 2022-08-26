@@ -13,8 +13,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 1px solid rgb(0, 60, 255);
-  img {
+
+  .img {
     position: absolute;
     width: 375px;
     top: 0;
@@ -24,16 +24,17 @@
   }
 }
 
-.input {
-  height: 36px;
-  width: 100%;
-  background-color: brown;
-}
-.category {
+.search-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 8px;
   align-items: flex-end;
-  height: 36px;
-  width: 50%;
-  background-color: brown;
+  .category {
+    height: 36px;
+    width: 55%;
+    background-color: brown;
+  }
 }
 
 .recipes {
