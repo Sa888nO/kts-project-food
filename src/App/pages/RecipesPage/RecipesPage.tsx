@@ -1,8 +1,7 @@
-import { Card } from "@components/Card/Card";
+import Card from "@components/Card";
 import { Input } from "@components/Input/Input";
-import { Loader } from "@components/Loader/Loader";
 import { MultiDropdown } from "@components/MultiDropdown/MultiDropdown";
-import { WithLoader } from "@components/WithLoader/WithLoader";
+
 import "./RecipesPage.scss";
 
 const RecipesPage = () => {
@@ -23,7 +22,6 @@ const RecipesPage = () => {
         <div className="recipes">
           <Card />
           <Card /> <Card /> <Card /> <Card /> <Card /> <Card /> <Card />
-          <Loader loading={true} />
         </div>
       </div>
     </div>
