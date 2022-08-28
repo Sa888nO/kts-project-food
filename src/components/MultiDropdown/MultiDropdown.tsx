@@ -54,7 +54,7 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
                   onClick={() => {
                     console.log(child.value);
                     if (value.includes(child)) {
-                      onChange(value.filter((item) => item.key != child.key));
+                      onChange(value.filter((item) => item.key !== child.key));
                     } else {
                       onChange([...value, child]);
                     }

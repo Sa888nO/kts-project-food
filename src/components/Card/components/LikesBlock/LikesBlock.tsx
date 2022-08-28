@@ -1,6 +1,6 @@
 import styles from "./LikesBlock.module.scss";
 
-type LikesBlockProps = {
+export type LikesBlockProps = {
   likesCount: number;
 };
 

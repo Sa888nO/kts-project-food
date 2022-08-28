@@ -6,7 +6,7 @@ export type InputProps = Omit<
   "onChange"
 > & {
   /** Значение поля */
-  value: string;
+  value?: string;
   /** Callback, вызываемый при вводе данных в поле */
   onChange: (value: string) => void;
 };
@@ -20,7 +20,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <input
       type="text"
-      value={value}
+      placeholder={"Search"}
       {...props}
       className={classNames("input", props.className, {
         input_disabled: dis,

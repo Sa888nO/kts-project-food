@@ -1,16 +1,21 @@
 import styles from "./InfoBlock.module.scss";
 
-type InfoBlockProps = {
+export type InfoBlockProps = {
   image: string;
   title: string;
   ingredients: string;
   countKcal: number;
+  onClickForButton: React.MouseEventHandler;
+
+  id: number;
 };
 const InfoBlock: React.FC<InfoBlockProps> = ({
   image,
   title,
   ingredients,
   countKcal,
+  onClickForButton,
+  id,
 }) => {
   return (
     <div className={`${styles["content"]}`}>
@@ -21,7 +26,12 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
       <div className={`${styles["content_ingredients"]}`}>{ingredients}</div>
       <div className={`${styles["footer"]}`}>
         <div className={`${styles["footer_count-kcal"]}`}>{countKcal} kcal</div>
-        <div className={`${styles["footer_button"]}`}></div>
+        <button
+          className={`${styles["footer_button"]}`}
+          onClick={() => {
+            console.log("click subbutton " + id);
+          }}
+        ></button>
       </div>
     </div>
   );

@@ -20,8 +20,90 @@ const RecipesPage = () => {
         </div>
 
         <div className="recipes">
-          <Card />
-          <Card /> <Card /> <Card /> <Card /> <Card /> <Card /> <Card />
+          <Card
+            likesCount={1}
+            image="./pngfind1.png"
+            title="Burger1"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={1}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
+          <Card
+            likesCount={2}
+            image="./pngfind1.png"
+            title="Burger2"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={2}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
+          <Card
+            likesCount={3}
+            image="./pngfind1.png"
+            title="Burger3"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={3}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
+          <Card
+            likesCount={4}
+            image="./pngfind1.png"
+            title="Burger4"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={4}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
+          <Card
+            likesCount={5}
+            image="./pngfind1.png"
+            title="Burger5"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={5}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
+          <Card
+            likesCount={6}
+            image="./pngfind1.png"
+            title="Burger6"
+            ingredients="1 2 3"
+            countKcal={200}
+            onClickForButton={(id) => {
+              console.log(id);
+            }}
+            id={6}
+            onClick={(title) => {
+              console.log("click " + title);
+            }}
+          />
         </div>
       </div>
     </div>
