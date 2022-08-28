@@ -1,4 +1,4 @@
-import "./Card.scss";
+import styles from "./Card.module.scss";
 import InfoBlock from "./components/InfoBlock";
 import { InfoBlockProps } from "./components/InfoBlock/InfoBlock";
 import LikesBlock from "./components/LikesBlock";
@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div
-      className="card"
+      className={`${styles.card}`}
       onClick={() => {
         console.log("click " + id);
       }}

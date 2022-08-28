@@ -1,5 +1,6 @@
 import RecipesPage from "@pages/RecipesPage";
-import "./App.css";
+
+import "@styles/settings.scss";
 
 function App() {
   return <RecipesPage />;

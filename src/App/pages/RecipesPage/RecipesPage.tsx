@@ -1,15 +1,41 @@
+import { useEffect, useState } from "react";
+
 import Card from "@components/Card";
 import { Input } from "@components/Input/Input";
 import { MultiDropdown } from "@components/MultiDropdown/MultiDropdown";
+import axios from "axios";
 
-import "./RecipesPage.scss";
+import styles from "./RecipesPage.module.scss";
 
 const RecipesPage = () => {
+  const [L, setL] = useState<any>([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const result = await axios({
+        method: "get",
+        url: "https://api.spoonacular.com/recipes/complexSearch",
+        // https://api.spoonacular.com/recipes/complexSearch?apiKey=674493274ad544d1b8cb5551c56d594f&number=3
+      });
+      setL(
+        result.data.results.map((raw: any) => ({
+          title: raw.title,
+        }))
+      );
+    };
+    console.log("useEff");
+    fetch();
+  }, []);
+  console.log("L" + L);
   return (
-    <div className="wrapper">
-      <div className="content">
-        <img src="./BACKGROUND2.png" alt="" className="img" />
-        <div className="search-block">
+    <div className={styles.wrapper}>
+      <div className={styles.content}>
+        <img
+          src="./images/BACKGROUND2.png"
+          alt=""
+          className={`${styles.img}`}
+        />
+        <div className={styles["search-block"]}>
           <Input
             onChange={(e) => {
               console.log(e);
@@ -19,7 +45,7 @@ const RecipesPage = () => {
           <MultiDropdown />
         </div>
 
-        <div className="recipes">
+        <div className={styles.recipes}>
           <Card
             likesCount={1}
             image="./pngfind1.png"
