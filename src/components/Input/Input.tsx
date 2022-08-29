@@ -26,7 +26,9 @@ export const Input: React.FC<InputProps> = ({
         input_disabled: dis,
       })}
       disabled={dis}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        onChange(e.target.value);
+      }}
     />
   );
 };

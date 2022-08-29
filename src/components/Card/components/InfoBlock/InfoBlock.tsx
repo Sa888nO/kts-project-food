@@ -5,8 +5,7 @@ export type InfoBlockProps = {
   title: string;
   ingredients: string;
   countKcal: number;
-  onClickForButton: React.MouseEventHandler;
-
+  onClickForButton?: React.MouseEventHandler;
   id: number;
 };
 const InfoBlock: React.FC<InfoBlockProps> = ({
@@ -18,12 +17,23 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
   id,
 }) => {
   return (
-    <div className={`${styles["content"]}`}>
-      <div className={`${styles["img-block"]}`}>
-        <img src={image} alt="img" className={`${styles["img-block_img"]}`} />
+    <>
+      <div className={`${styles["content"]}`}>
+        <div className={`${styles["img-block"]}`}>
+          <img src={image} alt="img" className={`${styles["img-block_img"]}`} />
+        </div>
+        <h5 className={`${styles["content_title"]}`}>{title}</h5>
+        <div className={`${styles["content_ingredients"]}`}>{ingredients}</div>
+        {/* <div className={`${styles["footer"]}`}>
+        <div className={`${styles["footer_count-kcal"]}`}>{countKcal} kcal</div>
+        <button
+          className={`${styles["footer_button"]}`}
+          onClick={() => {
+            console.log("click subbutton " + id);
+          }}
+        ></button>
+      </div> */}
       </div>
-      <h5 className={`${styles["content_title"]}`}>{title}</h5>
-      <div className={`${styles["content_ingredients"]}`}>{ingredients}</div>
       <div className={`${styles["footer"]}`}>
         <div className={`${styles["footer_count-kcal"]}`}>{countKcal} kcal</div>
         <button
@@ -33,7 +43,7 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
           }}
         ></button>
       </div>
-    </div>
+    </>
   );
 };
 export default InfoBlock;
