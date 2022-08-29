@@ -24,23 +24,13 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
         </div>
         <h5 className={`${styles["content_title"]}`}>{title}</h5>
         <div className={`${styles["content_ingredients"]}`}>{ingredients}</div>
-        {/* <div className={`${styles["footer"]}`}>
-        <div className={`${styles["footer_count-kcal"]}`}>{countKcal} kcal</div>
-        <button
-          className={`${styles["footer_button"]}`}
-          onClick={() => {
-            console.log("click subbutton " + id);
-          }}
-        ></button>
-      </div> */}
       </div>
       <div className={`${styles["footer"]}`}>
         <div className={`${styles["footer_count-kcal"]}`}>{countKcal} kcal</div>
         <button
+          type="button"
           className={`${styles["footer_button"]}`}
-          onClick={() => {
-            console.log("click subbutton " + id);
-          }}
+          onClick={() => onClickForButton}
         ></button>
       </div>
     </>

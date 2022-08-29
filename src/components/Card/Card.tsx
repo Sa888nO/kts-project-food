@@ -7,7 +7,6 @@ import { LikesBlockProps } from "./components/LikesBlock/LikesBlock";
 type CardProps = LikesBlockProps &
   InfoBlockProps & {
     id: number;
-    onClick: React.MouseEventHandler;
   };
 
 const Card: React.FC<CardProps> = ({
@@ -18,15 +17,9 @@ const Card: React.FC<CardProps> = ({
   countKcal,
   onClickForButton,
   id,
-  onClick,
 }) => {
   return (
-    <div
-      className={`${styles.card}`}
-      onClick={() => {
-        console.log("click " + id);
-      }}
-    >
+    <div className={`${styles.card}`}>
       <LikesBlock likesCount={likesCount} />
       <InfoBlock
         image={image}

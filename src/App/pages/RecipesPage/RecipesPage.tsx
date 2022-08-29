@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import Card from "@components/Card";
 import { Input } from "@components/Input/Input";
 import { MultiDropdown } from "@components/MultiDropdown/MultiDropdown";
+import { API_ENDPOINTS, KEYS, OPTIONS } from "@configs/api";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Recipes } from "src/types/recipes";
 
 import styles from "./RecipesPage.module.scss";
@@ -12,11 +14,11 @@ const RecipesPage = () => {
   const [Recipes, setRecipes] = useState<Recipes[]>([]);
 
   useEffect(() => {
-    const fetch = async () => {
+    const getRecipes = async () => {
       const result = await axios({
         method: "get",
-        url: "",
-        // https://api.spoonacular.com/recipes/complexSearch?apiKey=674493274ad544d1b8cb5551c56d594f&addRecipeNutrition=true
+        url: `${API_ENDPOINTS.RECIPSE}?${KEYS.key2}&${OPTIONS.fullInfo}`,
+        // ${API_ENDPOINTS.RECIPSE}?${KEYS.key1}&${OPTIONS.fullInfo}
       });
       setRecipes(
         result.data.results.map((recipe: any) => {
@@ -25,7 +27,7 @@ const RecipesPage = () => {
             ingredientsArray.push(item.name);
           });
           let ingredients: string = ingredientsArray.join(" ");
-          let i = {
+          return {
             likesCount: recipe.aggregateLikes,
             image: recipe.image,
             title: recipe.title,
@@ -33,15 +35,11 @@ const RecipesPage = () => {
             countKcal: recipe.nutrition.nutrients[0].amount,
             id: recipe.id,
           };
-          console.log(i);
-          return i;
         })
       );
     };
-    console.log("useEff");
-    fetch();
+    getRecipes();
   }, []);
-  console.log("L" + Recipes);
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -57,35 +55,20 @@ const RecipesPage = () => {
 
         <div className={styles.recipes}>
           {Recipes.map((recipe) => (
-            <Card
-              likesCount={recipe.likesCount}
-              image={recipe.image}
-              title={recipe.title}
-              ingredients={recipe.ingredients}
-              countKcal={recipe.countKcal}
-              onClickForButton={(id) => {
-                console.log(id);
-              }}
-              id={recipe.id}
-              onClick={(title) => {
-                console.log("click " + title);
-              }}
-            />
+            <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
+              <Card
+                likesCount={recipe.likesCount}
+                image={recipe.image}
+                title={recipe.title}
+                ingredients={recipe.ingredients}
+                countKcal={recipe.countKcal}
+                onClickForButton={(id) => {
+                  console.log(id);
+                }}
+                id={recipe.id}
+              />
+            </Link>
           ))}
-          <Card
-            likesCount={1}
-            image="./pngfind1.png"
-            title="Burger1"
-            ingredients="1 2 3"
-            countKcal={200}
-            onClickForButton={(id) => {
-              console.log(id);
-            }}
-            id={1}
-            onClick={(title) => {
-              console.log("click " + title);
-            }}
-          />
         </div>
       </div>
     </div>

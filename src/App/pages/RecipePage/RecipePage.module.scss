@@ -1,0 +1,62 @@
+.wrapper {
+  padding-top: 30px;
+  min-width: 375px;
+  display: flex;
+  justify-content: center;
+}
+.recipe {
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  &_title {
+    padding: 48px 65px 0 40px;
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 35.38px;
+  }
+  &_info {
+    padding: 25px 0 20px 40px;
+    font-weight: 500;
+    font-size: 12px;
+    a {
+      text-decoration: underline;
+      color: blue;
+    }
+  }
+}
+
+.rating-block {
+  display: flex;
+  gap: 45px;
+  padding: 16px 0 0 40px;
+  &_element {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: 0.5px;
+    color: #3b3b3b;
+    mix-blend-mode: normal;
+    span {
+      opacity: 0.3;
+    }
+  }
+}
+
+.image-block {
+  position: relative;
+}
+.link-back {
+  background-image: url("./link-back.png");
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left: 19px;
+  top: 38px;
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 7px;
+}
