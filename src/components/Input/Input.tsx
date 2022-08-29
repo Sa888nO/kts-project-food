@@ -1,5 +1,6 @@
 import classNames from "classnames";
-import "./Input.scss";
+
+import styles from "./Input.module.scss";
 /** Пропсы, которые принимает компонент Input */
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -22,7 +23,7 @@ export const Input: React.FC<InputProps> = ({
       type="text"
       placeholder={"Search"}
       {...props}
-      className={classNames("input", props.className, {
+      className={classNames(styles.input, props.className, {
         input_disabled: dis,
       })}
       disabled={dis}

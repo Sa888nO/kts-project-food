@@ -18,7 +18,6 @@ const RecipesPage = () => {
       const result = await axios({
         method: "get",
         url: `${API_ENDPOINTS.RECIPSE}?${KEYS.key2}&${OPTIONS.fullInfo}`,
-        // ${API_ENDPOINTS.RECIPSE}?${KEYS.key1}&${OPTIONS.fullInfo}
       });
       setRecipes(
         result.data.results.map((recipe: any) => {
@@ -62,9 +61,7 @@ const RecipesPage = () => {
                 title={recipe.title}
                 ingredients={recipe.ingredients}
                 countKcal={recipe.countKcal}
-                onClickForButton={(id) => {
-                  console.log(id);
-                }}
+                onClickForButton={() => {}}
                 id={recipe.id}
               />
             </Link>

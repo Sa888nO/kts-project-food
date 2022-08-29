@@ -1,5 +1,6 @@
 export const API_ENDPOINTS = {
   RECIPSE: "https://api.spoonacular.com/recipes/complexSearch",
+  RECIPE: "https://api.spoonacular.com/recipes/",
 };
 
 export const KEYS = {
@@ -9,4 +10,5 @@ export const KEYS = {
 
 export const OPTIONS = {
   fullInfo: "addRecipeNutrition=true",
+  fullInfoForRecipe: "includeNutrition=true",
 };

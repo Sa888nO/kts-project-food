@@ -1,3 +1,5 @@
+@import "@styles/variables.scss";
+
 .wrapper {
   padding-top: 30px;
   min-width: 375px;
@@ -17,10 +19,9 @@
   &_info {
     padding: 25px 0 20px 40px;
     font-weight: 500;
-    font-size: 12px;
     a {
       text-decoration: underline;
-      color: blue;
+      color: $blue;
     }
   }
 }
@@ -34,10 +35,10 @@
     display: flex;
     gap: 15px;
     font-weight: 400;
-    font-size: 14px;
+    font-size: $font-normal;
     line-height: 19px;
     letter-spacing: 0.5px;
-    color: #3b3b3b;
+    color: $gray;
     mix-blend-mode: normal;
     span {
       opacity: 0.3;

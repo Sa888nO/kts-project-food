@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
+import { API_ENDPOINTS, KEYS, OPTIONS } from "@configs/api";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Recipe } from "src/types/recipe";
@@ -14,13 +15,13 @@ const RecipePage = () => {
     const getRecipe = async () => {
       const result = await axios({
         method: "get",
-        url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=335c63bdf50f48feacc1f7d817e6608c&includeNutrition=true`,
-        // ${API_ENDPOINTS.RECIPSE}?${KEYS.key1}&${OPTIONS.fullInfo}
+        url: `${API_ENDPOINTS.RECIPE}${id}/information?${KEYS.key2}&${OPTIONS.fullInfoForRecipe}`,
       });
+      let health = Math.round(result.data.healthScore * 0.05 * 10) / 10;
       setRecipe({
         content: result.data.summary,
         title: result.data.title,
-        healthScore: result.data.healthScore,
+        healthScore: health,
         aggregateLikes: result.data.aggregateLikes,
         image: result.data.image,
       });

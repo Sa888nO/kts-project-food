@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./MultiDropdown.scss";
+
+import styles from "./MultiDropdown.module.scss";
 
 /** Вариант для выбора в фильтре */
 export type Option = {
@@ -39,20 +40,19 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
   const [isOpen, setOpen] = useState(false);
   const handleOpen = () => (isOpen ? setOpen(false) : setOpen(true));
   return (
-    <div className="wrap">
-      <button className="multi-down" onClick={handleOpen}>
+    <div className={styles.wrap}>
+      <button className={styles["multi-down"]} onClick={handleOpen}>
         {pluralizeOptions(value)}
       </button>
-      <div className="options">
+      <div className={styles.options}>
         {isOpen &&
           options.map((child, index) => {
             return (
               !disabled && (
                 <div
-                  className="option"
+                  className={styles.option}
                   key={child.key}
                   onClick={() => {
-                    console.log(child.value);
                     if (value.includes(child)) {
                       onChange(value.filter((item) => item.key !== child.key));
                     } else {
