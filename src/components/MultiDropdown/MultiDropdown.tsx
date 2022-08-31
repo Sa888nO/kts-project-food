@@ -23,7 +23,7 @@ export type MultiDropdownProps = {
   /** Преобразовать выбранные значения в строку. Отображается в дропдауне в качестве выбранного значения */
   pluralizeOptions?: (value: Option[]) => string;
 };
-export const MultiDropdown: React.FC<MultiDropdownProps> = ({
+const MultiDropdown: React.FC<MultiDropdownProps> = ({
   options = [
     { key: "1", value: "Мясо" },
     { key: "2", value: "Рыба" },
@@ -69,3 +69,5 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
     </div>
   );
 };
+
+export default MultiDropdown;

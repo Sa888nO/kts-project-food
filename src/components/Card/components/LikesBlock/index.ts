@@ -1,3 +1,1 @@
-import LikesBlock from "./LikesBlock";
-
-export default LikesBlock;
+export { default } from "./LikesBlock";

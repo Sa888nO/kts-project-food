@@ -11,7 +11,7 @@ export type InputProps = Omit<
   /** Callback, вызываемый при вводе данных в поле */
   onChange: (value: string) => void;
 };
-export const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({
   onChange,
   value,
   disabled,
@@ -33,3 +33,4 @@ export const Input: React.FC<InputProps> = ({
     />
   );
 };
+export default Input;

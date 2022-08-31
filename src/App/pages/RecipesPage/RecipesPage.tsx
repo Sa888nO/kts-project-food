@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 import Card from "@components/Card";
-import { Input } from "@components/Input/Input";
-import { MultiDropdown } from "@components/MultiDropdown/MultiDropdown";
+import Input from "@components/Input";
+import MultiDropdown from "@components/MultiDropdown";
 import { API_ENDPOINTS, KEYS, OPTIONS } from "@configs/api";
 import axios from "axios";
 import { Link } from "react-router-dom";

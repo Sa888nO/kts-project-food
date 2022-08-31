@@ -1,3 +1,1 @@
-import InfoBlock from "./InfoBlock";
-
-export default InfoBlock;
+export { default } from "./InfoBlock";

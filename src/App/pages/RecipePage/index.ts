@@ -1,3 +1,1 @@
-import RecipePage from "./RecipePage";
-
-export default RecipePage;
+export { default } from "./RecipePage";
