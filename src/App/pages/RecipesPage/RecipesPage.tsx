@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import background from "@assets/images/BACKGROUND2.png";
 import Card from "@components/Card";
 import Input from "@components/Input";
 import MultiDropdown from "@components/MultiDropdown";
@@ -42,11 +43,7 @@ const RecipesPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <img
-          src="./images/BACKGROUND2.png"
-          alt=""
-          className={`${styles.img}`}
-        />
+        <img src={background} alt="" className={`${styles.img}`} />
         <div className={styles["search-block"]}>
           <Input onChange={() => {}} />
           <MultiDropdown />
