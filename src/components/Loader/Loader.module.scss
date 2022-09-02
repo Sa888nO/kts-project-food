@@ -1,0 +1,39 @@
+.loader_size-s {
+  border: 3px solid red;
+  width: 20px;
+  height: 20px;
+}
+.loader_size-m {
+  border: 4.5px solid red;
+  width: 40px;
+  height: 40px;
+}
+.loader_size-l {
+  border: 6px solid red;
+  width: 60px;
+  height: 60px;
+}
+
+.loader {
+  animation: 1.5s linear 0s normal none infinite running loader;
+  border-right-color: transparent;
+  border-radius: 100%;
+  transform: rotate(35deg);
+}
+
+.button_loader {
+  border-left-color: white;
+  border-top-color: white;
+  border-bottom-color: white;
+  width: 11px;
+  height: 11px;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

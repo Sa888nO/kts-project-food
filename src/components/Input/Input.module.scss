@@ -1,0 +1,10 @@
+@import "@styles/variables.scss";
+.input {
+  border: 0;
+  height: 36px;
+  width: 100%;
+  border-radius: 7px;
+  background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
+  padding-left: 32px;
+  outline: none;
+}

@@ -1,0 +1,14 @@
+@import "@styles/variables.scss";
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  padding: 8px 12px;
+  box-shadow: 0px 1px 8px $black-shadow;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 2px $red-shadow;
+  }
+}

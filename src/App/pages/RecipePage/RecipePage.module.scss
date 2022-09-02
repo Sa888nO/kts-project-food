@@ -1,0 +1,49 @@
+@import "@styles/variables.scss";
+
+.wrapper {
+  padding-top: 30px;
+  min-width: 375px;
+  display: flex;
+  justify-content: center;
+}
+.recipe {
+  width: 375px;
+  display: flex;
+  flex-direction: column;
+  &_title {
+    padding: 48px 65px 0 40px;
+    font-size: 27px;
+    font-weight: 500;
+    line-height: 35.38px;
+  }
+  &_info {
+    padding: 25px 0 20px 40px;
+    font-weight: 500;
+    a {
+      text-decoration: underline;
+      color: $blue;
+    }
+  }
+}
+
+.rating-block {
+  display: flex;
+  gap: 45px;
+  padding: 16px 0 0 40px;
+}
+
+.image-block {
+  position: relative;
+}
+.link-back {
+  background-image: url("./link-back.png");
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left: 19px;
+  top: 38px;
+  display: block;
+  width: 45px;
+  height: 45px;
+  border-radius: 7px;
+}
