@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 import Loader from "@components/Loader";
-import { API_ENDPOINTS, KEYS, OPTIONS } from "@configs/api";
+import { API_ENDPOINTS, KEYS } from "@configs/api";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Recipe } from "src/types/recipe";
@@ -19,7 +19,8 @@ const RecipePage = () => {
     const getRecipe = async () => {
       const result = await axios({
         method: "get",
-        url: `${API_ENDPOINTS.RECIPE}${id}/information?${KEYS.key1}&${OPTIONS.fullInfoForRecipe}`,
+        url: `${API_ENDPOINTS.RECIPE}${id}/information`,
+        params: { apiKey: KEYS.key1, includeNutrition: true },
       });
       setRecipe({
         content: result.data.summary,
