@@ -26,7 +26,7 @@ const RecipesPage = () => {
       setRecipes(
         result.data.results.map((recipe: any) => {
           let ingredientsArray: string[] = [];
-          recipe.nutrition.ingredients.map((item: { name: string }) => {
+          recipe.nutrition.ingredients.map((item: { name: string }): void => {
             ingredientsArray.push(item.name);
           });
           let ingredients: string = ingredientsArray.join(" ");
@@ -47,7 +47,7 @@ const RecipesPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <img src={background} alt="" className={`${styles.img}`} />
+        <img src={background} alt="" className={styles.img} />
         <div className={styles["search-block"]}>
           <Input onChange={() => {}} />
           <MultiDropdown />
