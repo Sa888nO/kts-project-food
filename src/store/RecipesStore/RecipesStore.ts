@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, KEYS } from "@configs/api";
+import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
 import { parseRecipesData } from "@utils/parseRecipesData";
 import axios from "axios";
 import { makeAutoObservable, runInAction } from "mobx";
@@ -8,6 +8,7 @@ class RecipesStore {
   private _recipesList: Recipes[] = [];
   private _items: number = 6;
   private _hasMore: boolean = true;
+  private _search: string = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -20,10 +21,15 @@ class RecipesStore {
     return this._hasMore;
   }
 
+  updateSearch(value: string) {
+    this._search = value;
+    // this.getRecipes();
+  }
+
   moreRecipes() {
     this._items += 10;
     this.getRecipes();
-    if (this._items >= 12) {
+    if (this._items >= 50) {
       this._hasMore = false;
     }
   }
@@ -33,9 +39,10 @@ class RecipesStore {
       method: "get",
       url: API_ENDPOINTS.RECIPSE,
       params: {
-        apiKey: KEYS.key4,
+        apiKey: CURRENT_KEY,
         addRecipeNutrition: true,
         number: this._items,
+        query: this._search,
       },
     });
     if (result.data.results.length !== 0) {
@@ -45,8 +52,6 @@ class RecipesStore {
       });
     }
   }
-
-  destroy(): void {}
 }
 
 export default new RecipesStore();

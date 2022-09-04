@@ -1,4 +1,4 @@
-import { API_ENDPOINTS, KEYS } from "@configs/api";
+import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
 import { parseRecipeData } from "@utils/parseRecipeData";
 import axios from "axios";
 import { makeAutoObservable, runInAction } from "mobx";
@@ -15,12 +15,16 @@ class RecipeStore {
     return this._recipe;
   }
 
+  clear(): void {
+    this._recipe = undefined;
+  }
+
   async getRecipe(id: string | undefined): Promise<void> {
     const result = await axios({
       method: "get",
       url: `${API_ENDPOINTS.RECIPE}${id}/information`,
       params: {
-        apiKey: KEYS.key4,
+        apiKey: CURRENT_KEY,
         includeNutrition: true,
       },
     });
@@ -30,8 +34,6 @@ class RecipeStore {
       });
     }
   }
-
-  destroy(): void {}
 }
 
 export default new RecipeStore();

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 import Loader from "@components/Loader";
-import { API_ENDPOINTS, KEYS } from "@configs/api";
+import { API_ENDPOINTS } from "@configs/api";
 import RecipeStore from "@store/RecipeStore";
 import axios from "axios";
 import { observable, observe } from "mobx";
@@ -20,6 +20,9 @@ const RecipePage = () => {
   const { id } = useParams();
   useEffect(() => {
     RecipeStore.getRecipe(id);
+    return () => {
+      RecipeStore.clear();
+    };
   }, []);
   return (
     <div className={styles.wrapper}>

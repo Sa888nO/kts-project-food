@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import background from "@assets/images/BACKGROUND2.png";
 import Card from "@components/Card";
 import Input from "@components/Input";
@@ -13,15 +11,19 @@ import { Link } from "react-router-dom";
 import styles from "./RecipesPage.module.scss";
 
 const RecipesPage = () => {
-  useEffect(() => {
+  if (RecipesStore.recipesList.length === 0) {
     RecipesStore.getRecipes();
-  }, []);
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <img src={background} alt="" className={styles.img} />
         <div className={styles["search-block"]}>
-          <Input onChange={() => {}} />
+          <Input
+            onChange={(value) => {
+              RecipesStore.updateSearch(value);
+            }}
+          />
           <MultiDropdown />
         </div>
 
