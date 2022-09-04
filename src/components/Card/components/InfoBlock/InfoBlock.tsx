@@ -45,8 +45,8 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
               x2="11.8929"
               y2="17.25"
               stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             />
             <line
               x1="6.75"
@@ -54,8 +54,8 @@ const InfoBlock: React.FC<InfoBlockProps> = ({
               x2="17.25"
               y2="12.1071"
               stroke="white"
-              stroke-width="1.5"
-              stroke-linecap="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             />
           </svg>
         </button>
