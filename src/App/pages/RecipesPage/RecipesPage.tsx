@@ -25,7 +25,7 @@ const RecipesPage = () => {
           <MultiDropdown />
         </div>
 
-        {!false ? (
+        {RecipesStore.recipesList ? (
           <InfiniteScroll
             dataLength={RecipesStore.recipesList.length}
             next={() => {

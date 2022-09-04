@@ -33,7 +33,7 @@ class RecipesStore {
       method: "get",
       url: API_ENDPOINTS.RECIPSE,
       params: {
-        apiKey: KEYS.key3,
+        apiKey: KEYS.key4,
         addRecipeNutrition: true,
         number: this._items,
       },

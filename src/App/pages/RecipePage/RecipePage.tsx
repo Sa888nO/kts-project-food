@@ -3,7 +3,10 @@ import React from "react";
 
 import Loader from "@components/Loader";
 import { API_ENDPOINTS, KEYS } from "@configs/api";
+import RecipeStore from "@store/RecipeStore";
 import axios from "axios";
+import { observable, observe } from "mobx";
+import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
 import { Recipe } from "src/types/recipe";
 
@@ -16,44 +19,31 @@ const RecipePage = () => {
   const [isLoading, setLoading] = useState<boolean>(true);
   const { id } = useParams();
   useEffect(() => {
-    const getRecipe = async () => {
-      const result = await axios({
-        method: "get",
-        url: `${API_ENDPOINTS.RECIPE}${id}/information`,
-        params: { apiKey: KEYS.key1, includeNutrition: true },
-      });
-      setRecipe({
-        content: result.data.summary,
-        title: result.data.title,
-        healthScore: result.data.healthScore,
-        aggregateLikes: result.data.aggregateLikes,
-        image: result.data.image,
-      });
-      setLoading(false);
-    };
-    getRecipe();
+    RecipeStore.getRecipe(id);
   }, []);
   return (
     <div className={styles.wrapper}>
-      {!isLoading && recipe !== undefined ? (
+      {RecipeStore.recipe ? (
         <div className={styles.recipe}>
           <div className={styles["image-block"]}>
-            <img src={recipe.image} alt="f" width={375} />
+            <img src={RecipeStore.recipe.image} alt="f" width={375} />
             <Link to="/" className={styles["link-back"]}></Link>
           </div>
           <div className={styles["recipe_title"]}>{recipe?.title}</div>
           <div className={styles["rating-block"]}>
             <RatingBlockElement
               type={SvgType.like}
-              number={recipe.aggregateLikes}
+              number={RecipeStore.recipe.aggregateLikes}
             />
             <RatingBlockElement
               type={SvgType.heart}
-              number={recipe.aggregateLikes}
+              number={RecipeStore.recipe.aggregateLikes}
             />
           </div>
           <div className={styles["recipe_info"]}>
-            <div dangerouslySetInnerHTML={{ __html: recipe.content }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: RecipeStore.recipe.content }}
+            />
           </div>
         </div>
       ) : (
@@ -63,4 +53,4 @@ const RecipePage = () => {
   );
 };
 
-export default RecipePage;
+export default observer(RecipePage);
