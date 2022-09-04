@@ -5,11 +5,11 @@ import Card from "@components/Card";
 import Input from "@components/Input";
 import Loader from "@components/Loader";
 import MultiDropdown from "@components/MultiDropdown";
+import RecipesStore from "@store/RecipesStore";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 
-import RecipesStore from "./../../../store/RecipesStore/RecipesStore";
 import styles from "./RecipesPage.module.scss";
 
 const RecipesPage = () => {
