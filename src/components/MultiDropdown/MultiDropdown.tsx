@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import classNames from "classnames";
+
+import { multiDropData } from "./multiDropData";
 import styles from "./MultiDropdown.module.scss";
 
 /** Вариант для выбора в фильтре */
@@ -24,12 +27,7 @@ export type MultiDropdownProps = {
   pluralizeOptions?: (value: Option[]) => string;
 };
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
-  options = [
-    { key: "1", value: "Мясо" },
-    { key: "2", value: "Рыба" },
-    { key: "3", value: "Овощи" },
-    { key: "4", value: "Фрукты" },
-  ],
+  options = multiDropData,
   value = [],
   onChange = (item: Option[]) => {},
   pluralizeOptions = () => {
@@ -50,7 +48,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
             return (
               !disabled && (
                 <div
-                  className={styles.option}
+                  className={classNames(styles.option, styles.clicked)}
                   key={child.key}
                   onClick={() => {
                     if (value.includes(child)) {
