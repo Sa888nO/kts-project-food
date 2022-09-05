@@ -15,7 +15,6 @@ class QueryParamsStore {
   };
 
   constructor() {
-    // makeAutoObservable(this);
     makeObservable<QueryParamsStore, PrivateFields>(this, {
       _params: observable,
       setSearch: action,

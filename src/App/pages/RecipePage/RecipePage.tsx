@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import React from "react";
 
 import Loader from "@components/Loader";
-import { API_ENDPOINTS } from "@configs/api";
 import RecipeStore from "@store/RecipeStore";
-import axios from "axios";
-import { observable, observe } from "mobx";
 import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
-import { Recipe } from "src/types/recipe";
 
 import RatingBlockElement from "./components/RatingBlockElement";
 import { SvgType } from "./components/RatingBlockElement/RatingBlockElement";
 import styles from "./RecipePage.module.scss";
 
 const RecipePage = () => {
-  const [recipe, setRecipe] = useState<Recipe>();
-  const [isLoading, setLoading] = useState<boolean>(true);
   const { id } = useParams();
   useEffect(() => {
     RecipeStore.getRecipe(id);
@@ -32,7 +26,9 @@ const RecipePage = () => {
             <img src={RecipeStore.recipe.image} alt="f" width={375} />
             <Link to="/" className={styles["link-back"]}></Link>
           </div>
-          <div className={styles["recipe_title"]}>{recipe?.title}</div>
+          <div className={styles["recipe_title"]}>
+            {RecipeStore.recipe.title}
+          </div>
           <div className={styles["rating-block"]}>
             <RatingBlockElement
               type={SvgType.like}
