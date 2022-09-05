@@ -4,6 +4,7 @@ import Input from "@components/Input";
 import Loader from "@components/Loader";
 import MultiDropdown from "@components/MultiDropdown";
 import RecipesStore from "@store/RecipesStore";
+import rootStore from "@store/RootStore/instance";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
@@ -21,7 +22,9 @@ const RecipesPage = () => {
         <div className={styles["search-block"]}>
           <Input
             onChange={(value) => {
-              RecipesStore.updateSearch(value);
+              rootStore.query.setSearch(value);
+              RecipesStore.getRecipes();
+              // RecipesStore.updateSearch(value);
             }}
           />
           <MultiDropdown />
@@ -31,9 +34,11 @@ const RecipesPage = () => {
           <InfiniteScroll
             dataLength={RecipesStore.recipesList.length}
             next={() => {
-              RecipesStore.moreRecipes();
+              rootStore.query.moreItems();
+              RecipesStore.getRecipes();
+              // RecipesStore.moreRecipes();
             }}
-            hasMore={RecipesStore.hasMore}
+            hasMore={true}
             className={styles.scroll}
             loader={<Loader className={styles.center} />}
           >

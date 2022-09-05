@@ -1,6 +1,6 @@
 import RecipePage from "@pages/RecipePage";
 import RecipesPage from "@pages/RecipesPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 
 import "@styles/settings.scss";
 

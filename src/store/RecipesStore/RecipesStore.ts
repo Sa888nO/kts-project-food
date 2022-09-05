@@ -1,4 +1,5 @@
 import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
+import rootStore from "@store/RootStore/instance";
 import { parseRecipesData } from "@utils/parseRecipesData";
 import axios from "axios";
 import { makeAutoObservable, runInAction } from "mobx";
@@ -6,9 +7,9 @@ import { Recipes } from "src/types/recipes";
 
 class RecipesStore {
   private _recipesList: Recipes[] = [];
-  private _items: number = 6;
-  private _hasMore: boolean = true;
-  private _search: string = "";
+  // private _items: number = 6;
+
+  // private _search: string = "";
 
   constructor() {
     makeAutoObservable(this);
@@ -17,22 +18,16 @@ class RecipesStore {
   get recipesList(): Recipes[] {
     return this._recipesList;
   }
-  get hasMore(): boolean {
-    return this._hasMore;
-  }
 
-  updateSearch(value: string) {
-    this._search = value;
-    // this.getRecipes();
-  }
+  // updateSearch(value: string) {
+  //   this._search = value;
+  //   // this.getRecipes();
+  // }
 
-  moreRecipes() {
-    this._items += 10;
-    this.getRecipes();
-    if (this._items >= 50) {
-      this._hasMore = false;
-    }
-  }
+  // moreRecipes() {
+  //   this._items += 10;
+  //   this.getRecipes();
+  // }
 
   async getRecipes(): Promise<void> {
     const result = await axios({
@@ -41,8 +36,8 @@ class RecipesStore {
       params: {
         apiKey: CURRENT_KEY,
         addRecipeNutrition: true,
-        number: this._items,
-        query: this._search,
+        number: rootStore.query.getRecipeItems(),
+        query: rootStore.query.getSearch(),
       },
     });
     if (result.data.results.length !== 0) {
