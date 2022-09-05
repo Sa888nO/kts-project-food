@@ -15,8 +15,13 @@
   border-radius: 7px;
   height: 36px;
   width: 100%;
+  max-width: 350px;
+
   outline: none;
   border: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .options {

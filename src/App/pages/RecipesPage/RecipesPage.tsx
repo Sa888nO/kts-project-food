@@ -3,6 +3,7 @@ import Card from "@components/Card";
 import Input from "@components/Input";
 import Loader from "@components/Loader";
 import MultiDropdown from "@components/MultiDropdown";
+import { multiDropData } from "@components/MultiDropdown/multiDropData";
 import RecipesStore from "@store/RecipesStore";
 import rootStore from "@store/RootStore/instance";
 import { observer } from "mobx-react-lite";
@@ -25,10 +26,9 @@ const RecipesPage = () => {
             onChange={(value) => {
               rootStore.query.setSearch(value);
               RecipesStore.getRecipes();
-              // RecipesStore.updateSearch(value);
             }}
           />
-          <MultiDropdown />
+          <MultiDropdown value={multiDropData} />
         </div>
 
         {RecipesStore.recipesList ? (
@@ -37,7 +37,6 @@ const RecipesPage = () => {
             next={() => {
               rootStore.query.moreItems();
               RecipesStore.getRecipes();
-              // RecipesStore.moreRecipes();
             }}
             hasMore={true}
             className={styles.scroll}

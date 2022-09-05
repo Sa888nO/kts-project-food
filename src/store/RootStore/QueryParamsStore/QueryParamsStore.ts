@@ -1,3 +1,4 @@
+import { Option } from "@components/MultiDropdown/MultiDropdown";
 import {
   action,
   makeAutoObservable,
@@ -9,9 +10,11 @@ import {
 type PrivateFields = "_params";
 
 class QueryParamsStore {
+  // type: Option[]
   private _params: { search: string; recipeItems: number } = {
     search: "",
     recipeItems: 10,
+    // type: [],
   };
 
   constructor() {

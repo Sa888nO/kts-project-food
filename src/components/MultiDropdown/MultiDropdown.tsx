@@ -30,8 +30,12 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   options = multiDropData,
   value = [],
   onChange = (item: Option[]) => {},
-  pluralizeOptions = () => {
-    return "Pick categories";
+  pluralizeOptions = (value) => {
+    if (value.length === 0) {
+      return "Pick categories";
+    } else {
+      return value.join(" ");
+    }
   },
   disabled,
 }) => {
