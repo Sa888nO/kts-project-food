@@ -21,6 +21,7 @@ const RecipesPage = () => {
         <img src={background} alt="" className={styles.img} />
         <div className={styles["search-block"]}>
           <Input
+            value={rootStore.query.getSearch()}
             onChange={(value) => {
               rootStore.query.setSearch(value);
               RecipesStore.getRecipes();

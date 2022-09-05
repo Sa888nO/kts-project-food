@@ -20,6 +20,7 @@ const Input: React.FC<InputProps> = ({
   let dis = disabled !== undefined ? true : false;
   return (
     <input
+      value={value}
       type="text"
       placeholder={"Search"}
       {...props}
