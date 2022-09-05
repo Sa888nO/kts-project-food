@@ -1,7 +1,10 @@
 import { useState } from "react";
 
-import classNames from "classnames";
+import RecipesStore from "@store/RecipesStore";
+import rootStore from "@store/RootStore";
+import { observer } from "mobx-react-lite";
 
+import OptionItem from "./components/OptionItem";
 import { multiDropData } from "./multiDropData";
 import styles from "./MultiDropdown.module.scss";
 
@@ -18,7 +21,7 @@ export type MultiDropdownProps = {
   /** Массив возможных вариантов для выбора */
   options?: Option[];
   /** Текущие выбранные значения поля, массив может быть пустым */
-  value?: Option[];
+  value: Option[];
   /** Callback, вызываемый при выборе варианта */
   onChange?: (value: Option[]) => void;
   /** Заблокирован ли дропдаун */
@@ -28,19 +31,22 @@ export type MultiDropdownProps = {
 };
 const MultiDropdown: React.FC<MultiDropdownProps> = ({
   options = multiDropData,
-  value = [],
+  value,
   onChange = (item: Option[]) => {},
   pluralizeOptions = (value) => {
     if (value.length === 0) {
       return "Pick categories";
     } else {
-      return value.join(" ");
+      let stringArray: string[] = [];
+      stringArray = value.map((item) => item.value);
+      return stringArray.join(", ");
     }
   },
   disabled,
 }) => {
   const [isOpen, setOpen] = useState(false);
   const handleOpen = () => (isOpen ? setOpen(false) : setOpen(true));
+
   return (
     <div className={styles.wrap}>
       <button className={styles["multi-down"]} onClick={handleOpen}>
@@ -51,19 +57,15 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
           options.map((child, index) => {
             return (
               !disabled && (
-                <div
-                  className={classNames(styles.option, styles.clicked)}
+                <OptionItem
                   key={child.key}
-                  onClick={() => {
-                    if (value.includes(child)) {
-                      onChange(value.filter((item) => item.key !== child.key));
-                    } else {
-                      onChange([...value, child]);
-                    }
+                  clicked={false}
+                  option={child}
+                  onClick={(child) => {
+                    rootStore.query.setNewType(child);
+                    RecipesStore.getRecipes();
                   }}
-                >
-                  {child.value}
-                </div>
+                />
               )
             );
           })}
@@ -72,4 +74,4 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
   );
 };
 
-export default MultiDropdown;
+export default observer(MultiDropdown);

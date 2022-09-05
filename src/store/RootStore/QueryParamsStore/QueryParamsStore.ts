@@ -1,20 +1,17 @@
 import { Option } from "@components/MultiDropdown/MultiDropdown";
-import {
-  action,
-  makeAutoObservable,
-  makeObservable,
-  observable,
-  runInAction,
-} from "mobx";
+import { action, makeObservable, observable, runInAction } from "mobx";
 
 type PrivateFields = "_params";
 
 class QueryParamsStore {
-  // type: Option[]
-  private _params: { search: string; recipeItems: number } = {
+  private _params: {
+    search: string;
+    recipeItems: number;
+    options: Option[];
+  } = {
     search: "",
     recipeItems: 10,
-    // type: [],
+    options: [],
   };
 
   constructor() {
@@ -23,6 +20,7 @@ class QueryParamsStore {
       _params: observable,
       setSearch: action,
       moreItems: action,
+      setNewType: action,
     });
   }
 
@@ -31,6 +29,14 @@ class QueryParamsStore {
   }
   getRecipeItems(): number {
     return this._params.recipeItems;
+  }
+  getOption(): Option[] {
+    return this._params.options;
+  }
+  getOptionForQuery(): string {
+    let queryString: string[];
+    queryString = this._params.options.map((op) => op.value);
+    return queryString.join(", ");
   }
 
   setSearch(search: string) {
@@ -41,6 +47,19 @@ class QueryParamsStore {
   moreItems() {
     runInAction(() => {
       this._params.recipeItems += 10;
+    });
+  }
+  setNewType(option: Option) {
+    runInAction(() => {
+      if (
+        this._params.options.filter((op) => op.key === option.key).length !== 0
+      ) {
+        this._params.options = this._params.options.filter(
+          (item) => item.key !== option.key
+        );
+      } else {
+        this._params.options = [...this._params.options, option];
+      }
     });
   }
 }

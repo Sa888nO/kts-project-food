@@ -7,9 +7,7 @@ import { Recipes } from "src/types/recipes";
 
 class RecipesStore {
   private _recipesList: Recipes[] = [];
-  // private _items: number = 6;
-
-  // private _search: string = "";
+  private _isLoading: boolean = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -18,18 +16,12 @@ class RecipesStore {
   get recipesList(): Recipes[] {
     return this._recipesList;
   }
-
-  // updateSearch(value: string) {
-  //   this._search = value;
-  //   // this.getRecipes();
-  // }
-
-  // moreRecipes() {
-  //   this._items += 10;
-  //   this.getRecipes();
-  // }
+  isLoading(): boolean {
+    return this._isLoading;
+  }
 
   async getRecipes(): Promise<void> {
+    this._isLoading = true;
     const result = await axios({
       method: "get",
       url: API_ENDPOINTS.RECIPSE,
@@ -38,14 +30,17 @@ class RecipesStore {
         addRecipeNutrition: true,
         number: rootStore.query.getRecipeItems(),
         query: rootStore.query.getSearch(),
+        type: rootStore.query.getOptionForQuery(),
       },
     });
-    if (result.data.results.length !== 0) {
-      runInAction(() => {
-        this._recipesList = [];
-        this._recipesList = parseRecipesData(result.data.results);
-      });
-    }
+
+    runInAction(() => {
+      this._recipesList = [];
+      this._recipesList = parseRecipesData(result.data.results);
+      this._isLoading = false;
+      // eslint-disable-next-line no-console
+      console.log(this._recipesList);
+    });
   }
 }
 
