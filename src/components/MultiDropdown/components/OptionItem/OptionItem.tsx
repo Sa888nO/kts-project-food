@@ -19,8 +19,6 @@ const OptionItem: React.FC<OptionItemProps> = ({ option, onClick }) => {
       onClick={() => {
         onClick(option);
         isClicked ? setClicked(false) : setClicked(true);
-        // eslint-disable-next-line no-console
-        console.log(isClicked);
       }}
     >
       {option.value}
