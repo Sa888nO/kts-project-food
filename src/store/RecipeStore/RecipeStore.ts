@@ -1,14 +1,27 @@
 import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
+import { Recipe } from "@store/models/recipe";
 import { parseRecipeData } from "@utils/parseRecipeData";
 import axios from "axios";
-import { makeAutoObservable, runInAction } from "mobx";
-import { Recipe } from "src/types/recipe";
+import {
+  action,
+  computed,
+  makeObservable,
+  observable,
+  runInAction,
+} from "mobx";
+
+type PrivateFields = "_recipe";
 
 class RecipeStore {
   private _recipe: Recipe = undefined;
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable<RecipeStore, PrivateFields>(this, {
+      _recipe: observable,
+      getRecipe: action,
+      recipe: computed,
+      clear: action,
+    });
   }
 
   get recipe(): Recipe {

@@ -1,4 +1,4 @@
-import { Recipe } from "src/types/recipe";
+import { Recipe } from "@store/models/recipe";
 
 export const parseRecipeData = (responseData: any): Recipe => {
   return {

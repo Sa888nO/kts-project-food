@@ -1,4 +1,4 @@
-import { Recipes } from "src/types/recipes";
+import { Recipes } from "@store/models/recipes";
 
 export const parseRecipesData = (responseData: Recipes[]): Recipes[] => {
   const arrayRecipes: Recipes[] = [];

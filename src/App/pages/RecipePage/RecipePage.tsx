@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import React from "react";
 
 import Loader from "@components/Loader";
 import RecipeStore from "@store/RecipeStore";

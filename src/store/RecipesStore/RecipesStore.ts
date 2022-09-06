@@ -1,16 +1,14 @@
 import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
+import { Recipes } from "@store/models/recipes";
 import rootStore from "@store/RootStore/instance";
 import { parseRecipesData } from "@utils/parseRecipesData";
 import axios from "axios";
 import { makeAutoObservable, runInAction } from "mobx";
-import { Recipes } from "src/types/recipes";
 
 class RecipesStore {
   private _recipesList: Recipes[] = [];
 
   constructor() {
-    // eslint-disable-next-line no-console
-    console.log("CREATRS");
     makeAutoObservable(this);
   }
 

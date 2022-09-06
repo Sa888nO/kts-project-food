@@ -16,4 +16,4 @@ const KEYS = {
   key: "b852eb1f7c414f6fbf1c43938f3640d5",
 };
 
-export const CURRENT_KEY = KEYS.key5;
+export const CURRENT_KEY = KEYS.key1;
