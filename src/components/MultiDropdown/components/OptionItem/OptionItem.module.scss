@@ -1,0 +1,15 @@
+@import "@styles/variables.scss";
+
+.option {
+  color: black;
+  z-index: 2;
+  padding-left: 19px;
+  line-height: 36px;
+  text-align: left;
+  height: 36px;
+  // background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
+}
+
+.click {
+  background: linear-gradient(98.81deg, #ffe7e7 -0.82%, #fcb1b1 101.53%);
+}

@@ -59,7 +59,6 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
               !disabled && (
                 <OptionItem
                   key={child.key}
-                  clicked={false}
                   option={child}
                   onClick={(child) => {
                     rootStore.query.setNewType(child);
