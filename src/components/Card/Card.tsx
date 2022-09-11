@@ -3,7 +3,6 @@ import InfoBlock from "./components/InfoBlock";
 import { InfoBlockProps } from "./components/InfoBlock/InfoBlock";
 import LikesBlock from "./components/LikesBlock";
 import { LikesBlockProps } from "./components/LikesBlock/LikesBlock";
-/** Пропсы, которые принимает компонент Card */
 type CardProps = LikesBlockProps &
   InfoBlockProps & {
     id: number;

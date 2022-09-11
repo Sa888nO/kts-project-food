@@ -1,58 +1,47 @@
-import { useEffect, useState } from "react";
-import React from "react";
+import { useEffect } from "react";
 
 import Loader from "@components/Loader";
-import { API_ENDPOINTS, KEYS, OPTIONS } from "@configs/api";
-import axios from "axios";
+import RecipeStore from "@store/RecipeStore";
+import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
-import { Recipe } from "src/types/recipe";
 
 import RatingBlockElement from "./components/RatingBlockElement";
 import { SvgType } from "./components/RatingBlockElement/RatingBlockElement";
 import styles from "./RecipePage.module.scss";
 
 const RecipePage = () => {
-  const [recipe, setRecipe] = useState<Recipe>();
-  const [isLoading, setLoading] = useState<boolean>(true);
   const { id } = useParams();
   useEffect(() => {
-    const getRecipe = async () => {
-      const result = await axios({
-        method: "get",
-        url: `${API_ENDPOINTS.RECIPE}${id}/information?${KEYS.key1}&${OPTIONS.fullInfoForRecipe}`,
-      });
-      setRecipe({
-        content: result.data.summary,
-        title: result.data.title,
-        healthScore: result.data.healthScore,
-        aggregateLikes: result.data.aggregateLikes,
-        image: result.data.image,
-      });
-      setLoading(false);
+    RecipeStore.getRecipe(id);
+    return () => {
+      RecipeStore.clear();
     };
-    getRecipe();
   }, []);
   return (
     <div className={styles.wrapper}>
-      {!isLoading && recipe !== undefined ? (
+      {RecipeStore.recipe ? (
         <div className={styles.recipe}>
           <div className={styles["image-block"]}>
-            <img src={recipe.image} alt="f" width={375} />
+            <img src={RecipeStore.recipe.image} alt="f" width={375} />
             <Link to="/" className={styles["link-back"]}></Link>
           </div>
-          <div className={styles["recipe_title"]}>{recipe?.title}</div>
+          <div className={styles["recipe_title"]}>
+            {RecipeStore.recipe.title}
+          </div>
           <div className={styles["rating-block"]}>
             <RatingBlockElement
               type={SvgType.like}
-              number={recipe.aggregateLikes}
+              number={RecipeStore.recipe.aggregateLikes}
             />
             <RatingBlockElement
               type={SvgType.heart}
-              number={recipe.aggregateLikes}
+              number={RecipeStore.recipe.aggregateLikes}
             />
           </div>
           <div className={styles["recipe_info"]}>
-            <div dangerouslySetInnerHTML={{ __html: recipe.content }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: RecipeStore.recipe.content }}
+            />
           </div>
         </div>
       ) : (
@@ -62,4 +51,4 @@ const RecipePage = () => {
   );
 };
 
-export default RecipePage;
+export default observer(RecipePage);

@@ -2,6 +2,7 @@
 .wrapper {
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 }
 .content {
   position: relative;
@@ -35,4 +36,13 @@
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.scroll {
+  overflow: hidden !important;
+  padding: 3px;
 }

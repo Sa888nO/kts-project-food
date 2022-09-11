@@ -15,26 +15,25 @@
   border-radius: 7px;
   height: 36px;
   width: 100%;
+  max-width: 350px;
+
   outline: none;
   border: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .options {
+  overflow: hidden;
   position: absolute;
   border-radius: 7px;
   top: 40px;
   width: 100%;
   z-index: 1;
   background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
+}
 
-  .option {
-    color: black;
-    z-index: 2;
-    border-radius: 7px;
-    padding-left: 19px;
-    line-height: 36px;
-    text-align: left;
-    height: 36px;
-    background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
-  }
+.clicked {
+  background-color: aqua;
 }
