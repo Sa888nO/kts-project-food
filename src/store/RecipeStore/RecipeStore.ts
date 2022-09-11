@@ -1,6 +1,5 @@
 import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
 import { Recipe } from "@store/models/recipe";
-import { parseRecipeData } from "@utils/parseRecipeData";
 import axios from "axios";
 import {
   action,
@@ -13,7 +12,7 @@ import {
 type PrivateFields = "_recipe";
 
 class RecipeStore {
-  private _recipe: Recipe = undefined;
+  private _recipe: Recipe = null;
 
   constructor() {
     makeObservable<RecipeStore, PrivateFields>(this, {
@@ -29,7 +28,7 @@ class RecipeStore {
   }
 
   clear(): void {
-    this._recipe = undefined;
+    this._recipe = null;
   }
 
   async getRecipe(id: string | undefined): Promise<void> {
@@ -43,9 +42,18 @@ class RecipeStore {
     });
     if (result.data) {
       runInAction(() => {
-        this._recipe = parseRecipeData(result.data);
+        this._recipe = RecipeStore.parseData(result.data);
       });
     }
+  }
+  static parseData(responseData: any): Recipe {
+    return {
+      content: responseData.summary,
+      title: responseData.title,
+      healthScore: responseData.healthScore,
+      aggregateLikes: responseData.aggregateLikes,
+      image: responseData.image,
+    };
   }
 }
 
