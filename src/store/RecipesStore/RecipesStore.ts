@@ -35,9 +35,9 @@ class RecipesStore {
   }
   static parseData(responseData: Recipes[]): Recipes[] {
     const arrayRecipes: Recipes[] = [];
-    responseData.map((recipe: any) => {
+    responseData.forEach((recipe: any) => {
       let ingredientsArray: string[] = [];
-      recipe.nutrition.ingredients.map((item: { name: string }): void => {
+      recipe.nutrition.ingredients.forEach((item: { name: string }): void => {
         ingredientsArray.push(item.name);
       });
       let ingredients: string = ingredientsArray.join(" ");
