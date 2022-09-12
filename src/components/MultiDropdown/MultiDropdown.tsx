@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import RecipesStore from "@store/RecipesStore";
-import rootStore from "@store/RootStore";
 import { observer } from "mobx-react-lite";
+import RecipesStore from "store/RecipesStore";
+import rootStore from "store/RootStore";
 
 import OptionItem from "./components/OptionItem";
 import { multiDropData } from "./multiDropData";

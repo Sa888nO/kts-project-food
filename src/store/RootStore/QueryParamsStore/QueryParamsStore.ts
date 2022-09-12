@@ -1,4 +1,4 @@
-import { Option } from "@components/MultiDropdown/MultiDropdown";
+import { Option } from "components/MultiDropdown/MultiDropdown";
 import { action, makeObservable, observable, runInAction } from "mobx";
 
 type PrivateFields = "_params";

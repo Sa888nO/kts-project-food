@@ -1,8 +1,8 @@
-import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
-import { Recipes } from "@store/models/recipes";
-import rootStore from "@store/RootStore/instance";
 import axios from "axios";
+import { API_ENDPOINTS, CURRENT_KEY } from "configs/api";
 import { makeAutoObservable, runInAction } from "mobx";
+import { Recipes } from "store/models/recipes";
+import rootStore from "store/RootStore/instance";
 
 class RecipesStore {
   private _recipesList: Recipes[] = [];

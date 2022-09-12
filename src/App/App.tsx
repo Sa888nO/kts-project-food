@@ -1,8 +1,9 @@
-import RecipePage from "@pages/RecipePage";
-import RecipesPage from "@pages/RecipesPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import "@styles/settings.scss";
+import RecipePage from "./pages/RecipePage";
+import RecipesPage from "./pages/RecipesPage";
+
+import "styles/settings.scss";
 
 function App() {
   return (

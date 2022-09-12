@@ -1,6 +1,5 @@
-import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
-import { Recipe } from "@store/models/recipe";
 import axios from "axios";
+import { API_ENDPOINTS, CURRENT_KEY } from "configs/api";
 import {
   action,
   computed,
@@ -8,6 +7,7 @@ import {
   observable,
   runInAction,
 } from "mobx";
+import { Recipe } from "store/models/recipe";
 
 type PrivateFields = "_recipe";
 

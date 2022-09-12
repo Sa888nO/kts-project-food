@@ -1,15 +1,18 @@
 const path = require("path");
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const TsCheckerPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const buildPath = path.resolve(__dirname, "dist");
 const srcPath = path.resolve(__dirname, "src");
 
 const isProd = process.env.NODE_ENV === "production";
+
 const getSettingsForStyles = (withModules = false) => {
   return [
-    MiniCssExtractPlugin.loader,
+    isProd ? MiniCssExtractPlugin.loader : "style-loader",
     !withModules
       ? "css-loader"
       : {
@@ -18,7 +21,7 @@ const getSettingsForStyles = (withModules = false) => {
             modules: {
               localIdentName: !isProd
                 ? "[path][name]__[local]"
-                : "[hash: base64]",
+                : "[hash:base64]",
             },
           },
         },
@@ -31,12 +34,13 @@ const getSettingsForStyles = (withModules = false) => {
       },
     },
     "sass-loader",
-  ];
+  ].filter(Boolean);
 };
 
 module.exports = {
-  entry: path.resolve(srcPath, "index.js "),
+  entry: path.join(srcPath, "index.tsx"),
   target: !isProd ? "web" : "browserslist",
+  devtool: isProd ? "hidden-source-map" : "eval-source-map",
   output: {
     path: buildPath,
     filename: "bundle.js",
@@ -46,8 +50,13 @@ module.exports = {
       template: path.join(srcPath, "index.html"),
     }),
     !isProd && new ReactRefreshWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: "[name]-[hash].css" }),
+    isProd &&
+      new MiniCssExtractPlugin({
+        filename: "[name]-[hash].css",
+      }),
+    new TsCheckerPlugin(),
   ].filter(Boolean),
+
   module: {
     rules: [
       {
@@ -55,20 +64,40 @@ module.exports = {
         use: getSettingsForStyles(true),
       },
       {
-        test: /\s?css$/,
+        test: /\.s?css$/,
         exclude: /\.module\.s?css$/,
-        use: getSettingsForStyles(false),
+        use: getSettingsForStyles(),
       },
       {
-        test: /\.jsx?$/,
+        test: /\.[tj]sx?$/,
         use: "babel-loader",
-        hot: true,
-        inline: true,
+      },
+      {
+        test: /\.(png|svg|jpg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024,
+          },
+        },
       },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      components: path.join(srcPath, "components"),
+      configs: path.join(srcPath, "configs"),
+      styles: path.join(srcPath, "styles"),
+      utils: path.join(srcPath, "utils"),
+      store: path.join(srcPath, "store"),
+      assets: path.join(srcPath, "assets"),
+    },
   },
   devServer: {
     host: "127.0.0.1",
     port: 8000,
+    hot: true,
+    historyApiFallback: true,
   },
 };
