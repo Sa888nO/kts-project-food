@@ -35,7 +35,7 @@ const RecipePage = () => {
             />
             <RatingBlockElement
               type={SvgType.heart}
-              number={RecipeStore.recipe.aggregateLikes}
+              number={RecipeStore.recipe.healthScore}
             />
           </div>
           <div className={styles["recipe_info"]}>
