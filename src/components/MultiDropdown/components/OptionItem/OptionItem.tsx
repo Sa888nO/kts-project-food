@@ -6,19 +6,22 @@ import { Option } from "components/MultiDropdown/MultiDropdown";
 import styles from "./OptionItem.module.scss";
 
 type OptionItemProps = {
+  isClicked?: boolean;
   option: Option;
   onClick: (child: Option) => void;
 };
 
-const OptionItem: React.FC<OptionItemProps> = ({ option, onClick }) => {
-  const [isClicked, setClicked] = useState(false);
+const OptionItem: React.FC<OptionItemProps> = ({
+  isClicked,
+  option,
+  onClick,
+}) => {
   return (
     <div
       className={classNames(styles.option, { [styles.click]: isClicked })}
       key={option.key}
       onClick={() => {
         onClick(option);
-        isClicked ? setClicked(false) : setClicked(true);
       }}
     >
       {option.value}
