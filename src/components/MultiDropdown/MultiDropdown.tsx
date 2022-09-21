@@ -3,15 +3,16 @@ import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import RecipesStore from "store/RecipesStore";
 import rootStore from "store/RootStore";
+import { Option } from "types";
 
 import OptionItem from "./components/OptionItem";
 import { multiDropData } from "./multiDropData";
 import styles from "./MultiDropdown.module.scss";
 
-export type Option = {
-  key: string;
-  value: string;
-};
+// export type Option = {
+//   key: string;
+//   value: string;
+// };
 
 export type MultiDropdownProps = {
   options?: Option[];

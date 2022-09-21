@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 import classNames from "classnames";
-import { Option } from "components/MultiDropdown/MultiDropdown";
+import { Option } from "types";
 
 import styles from "./OptionItem.module.scss";
 
