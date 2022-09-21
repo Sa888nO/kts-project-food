@@ -1,10 +1,12 @@
-@import "@styles/variables.scss";
+@import "styles/variables.scss";
 .wrapper {
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
 }
 .content {
+  max-width: 800px;
+  width: 100%;
   position: relative;
   min-width: 375px;
   height: 100%;
@@ -25,7 +27,7 @@
 
 .search-block {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
   padding: 0 8px;
   align-items: flex-end;
@@ -45,4 +47,10 @@
 .scroll {
   overflow: hidden !important;
   padding: 3px;
+}
+
+@media (max-width: 600px) {
+  .search-block {
+    flex-direction: column;
+  }
 }

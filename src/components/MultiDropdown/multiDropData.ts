@@ -1,4 +1,4 @@
-import { Option } from "./MultiDropdown";
+import { Option } from "types";
 
 export const multiDropData: Option[] = [
   { key: "1", value: "dessert" },

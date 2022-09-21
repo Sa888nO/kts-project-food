@@ -25,7 +25,10 @@ const Card: React.FC<CardProps> = ({
         ingredients={ingredients}
         title={title}
         countKcal={countKcal}
-        onClickForButton={() => {}}
+        onClickForButton={() => {
+          // eslint-disable-next-line no-console
+          console.log("click");
+        }}
         id={id}
       />
     </div>

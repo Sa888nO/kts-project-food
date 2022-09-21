@@ -1,12 +1,13 @@
-@import "@styles/variables.scss";
+@import "styles/variables.scss";
 
 .option {
   color: black;
   z-index: 2;
   padding-left: 19px;
-  line-height: 36px;
+  line-height: 60px;
   text-align: left;
-  height: 36px;
+  height: 60px;
+  font-size: 20px;
 }
 
 .click {

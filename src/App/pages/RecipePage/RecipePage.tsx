@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import Loader from "@components/Loader";
-import RecipeStore from "@store/RecipeStore";
+import Loader from "components/Loader";
 import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
+import RecipeStore from "store/RecipeStore";
 
 import RatingBlockElement from "./components/RatingBlockElement";
 import { SvgType } from "./components/RatingBlockElement/RatingBlockElement";
@@ -35,7 +35,7 @@ const RecipePage = () => {
             />
             <RatingBlockElement
               type={SvgType.heart}
-              number={RecipeStore.recipe.aggregateLikes}
+              number={RecipeStore.recipe.healthScore}
             />
           </div>
           <div className={styles["recipe_info"]}>

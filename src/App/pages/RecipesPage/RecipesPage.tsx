@@ -1,13 +1,13 @@
-import background from "@assets/images/BACKGROUND2.png";
-import Card from "@components/Card";
-import Input from "@components/Input";
-import Loader from "@components/Loader";
-import MultiDropdown from "@components/MultiDropdown";
-import RecipesStore from "@store/RecipesStore";
-import rootStore from "@store/RootStore/instance";
+import background from "assets/images/BACKGROUND2.png";
+import Card from "components/Card";
+import Input from "components/Input";
+import Loader from "components/Loader";
+import MultiDropdown from "components/MultiDropdown";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+import RecipesStore from "store/RecipesStore";
+import rootStore from "store/RootStore/instance";
 
 import styles from "./RecipesPage.module.scss";
 

@@ -1,8 +1,8 @@
-import { API_ENDPOINTS, CURRENT_KEY } from "@configs/api";
-import { Recipes } from "@store/models/recipes";
-import rootStore from "@store/RootStore/instance";
 import axios from "axios";
+import { API_ENDPOINTS, CURRENT_KEY } from "configs/api";
 import { makeAutoObservable, runInAction } from "mobx";
+import { Recipes } from "store/models/recipes";
+import rootStore from "store/RootStore/instance";
 
 class RecipesStore {
   private _recipesList: Recipes[] = [];
@@ -35,9 +35,9 @@ class RecipesStore {
   }
   static parseData(responseData: Recipes[]): Recipes[] {
     const arrayRecipes: Recipes[] = [];
-    responseData.map((recipe: any) => {
+    responseData.forEach((recipe: any) => {
       let ingredientsArray: string[] = [];
-      recipe.nutrition.ingredients.map((item: { name: string }): void => {
+      recipe.nutrition.ingredients.forEach((item: { name: string }): void => {
         ingredientsArray.push(item.name);
       });
       let ingredients: string = ingredientsArray.join(" ");

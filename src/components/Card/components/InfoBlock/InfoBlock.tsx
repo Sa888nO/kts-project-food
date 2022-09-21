@@ -1,4 +1,5 @@
 import styles from "./InfoBlock.module.scss";
+
 export type InfoBlockProps = {
   image: string;
   title: string;

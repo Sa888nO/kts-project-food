@@ -1,5 +1,5 @@
 import React from "react";
-import "@configs/configureMobX";
+import "configs/configureMobX";
 
 import ReactDOM from "react-dom/client";
 
@@ -9,7 +9,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  // <React.StrictMode>
-  <App />
-  // </React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
+
+if (module.hot) {
+  module.hot.accept();
+}
