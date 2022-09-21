@@ -9,11 +9,6 @@ import OptionItem from "./components/OptionItem";
 import { multiDropData } from "./multiDropData";
 import styles from "./MultiDropdown.module.scss";
 
-// export type Option = {
-//   key: string;
-//   value: string;
-// };
-
 export type MultiDropdownProps = {
   options?: Option[];
   value: Option[];
