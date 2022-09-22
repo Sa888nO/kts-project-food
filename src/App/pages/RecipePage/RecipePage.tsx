@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+import classNames from "classnames";
 import Loader from "components/Loader";
 import { observer } from "mobx-react-lite";
 import { Link, useParams } from "react-router-dom";
@@ -22,7 +23,7 @@ const RecipePage = () => {
       {RecipeStore.recipe ? (
         <div className={styles.recipe}>
           <div className={styles["image-block"]}>
-            <img src={RecipeStore.recipe.image} alt="f" width={375} />
+            <img src={RecipeStore.recipe.image} alt="f" />
             <Link to="/" className={styles["link-back"]}></Link>
           </div>
           <div className={styles["recipe_title"]}>
@@ -37,6 +38,15 @@ const RecipePage = () => {
               type={SvgType.heart}
               number={RecipeStore.recipe.healthScore}
             />
+          </div>
+          <div className={classNames(styles.ingredients)}>
+            {" "}
+            <span>ingredients</span>
+            {RecipeStore.recipe.ingredients.map((ing, index) => (
+              <div className={styles.ing}>
+                {index + 1}) {ing}
+              </div>
+            ))}
           </div>
           <div className={styles["recipe_info"]}>
             <div

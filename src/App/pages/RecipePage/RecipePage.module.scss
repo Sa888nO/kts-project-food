@@ -1,24 +1,31 @@
 @import "styles/variables.scss";
 
 .wrapper {
-  padding-top: 30px;
   min-width: 375px;
   display: flex;
   justify-content: center;
 }
 .recipe {
-  width: 375px;
+  width: 100%;
+  padding: 10px;
+  max-width: 800px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   &_title {
-    padding: 48px 65px 0 40px;
-    font-size: 27px;
-    font-weight: 500;
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
     line-height: 35.38px;
   }
   &_info {
-    padding: 25px 0 20px 40px;
+    padding-top: 20px;
+    max-width: 600px;
     font-weight: 500;
+    div {
+      font-size: 20px !important;
+    }
     a {
       text-decoration: underline;
       color: $blue;
@@ -27,13 +34,36 @@
 }
 
 .rating-block {
+  width: 100%;
+  max-width: 500px;
   display: flex;
+  justify-content: flex-start;
   gap: 45px;
-  padding: 16px 0 0 40px;
+  padding-top: 16px;
+}
+
+.ingredients {
+  padding-top: 16px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  span {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .ing {
+    font-size: 20px;
+    font-weight: 200px;
+  }
 }
 
 .image-block {
   position: relative;
+  img {
+    width: 100%;
+  }
 }
 .link-back {
   background-image: url("./link-back.png");

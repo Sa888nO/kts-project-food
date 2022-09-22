@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_ENDPOINTS, CURRENT_KEY } from "configs/api";
 import { makeAutoObservable, runInAction } from "mobx";
-import { Recipes } from "store/models/recipes";
+import { Recipes, RecipesAPI } from "store/models/recipes";
 import rootStore from "store/RootStore/instance";
 
 class RecipesStore {
@@ -33,14 +33,15 @@ class RecipesStore {
       this._recipesList = RecipesStore.parseData(result.data.results);
     });
   }
-  static parseData(responseData: Recipes[]): Recipes[] {
+  static parseData(responseData: RecipesAPI[]): Recipes[] {
     const arrayRecipes: Recipes[] = [];
-    responseData.forEach((recipe: any) => {
+    responseData.forEach((recipe: RecipesAPI) => {
       let ingredientsArray: string[] = [];
       recipe.nutrition.ingredients.forEach((item: { name: string }): void => {
         ingredientsArray.push(item.name);
       });
-      let ingredients: string = ingredientsArray.join(" ");
+      //
+      let ingredients: string = ingredientsArray.join(" + ");
       arrayRecipes.push({
         likesCount: recipe.aggregateLikes,
         image: recipe.image,

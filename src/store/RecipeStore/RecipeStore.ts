@@ -7,7 +7,7 @@ import {
   observable,
   runInAction,
 } from "mobx";
-import { Recipe } from "store/models/recipe";
+import { Recipe, RecipeAPI } from "store/models/recipe";
 
 type PrivateFields = "_recipe";
 
@@ -46,13 +46,18 @@ class RecipeStore {
       });
     }
   }
-  static parseData(responseData: any): Recipe {
+  static parseData(recipe: RecipeAPI): Recipe {
+    let ingredientsArray: string[] = [];
+    recipe.nutrition.ingredients.forEach((item: { name: string }): void => {
+      ingredientsArray.push(item.name);
+    });
     return {
-      content: responseData.summary,
-      title: responseData.title,
-      healthScore: responseData.healthScore,
-      aggregateLikes: responseData.aggregateLikes,
-      image: responseData.image,
+      content: recipe.summary,
+      title: recipe.title,
+      healthScore: recipe.healthScore,
+      aggregateLikes: recipe.aggregateLikes,
+      image: recipe.image,
+      ingredients: ingredientsArray,
     };
   }
 }

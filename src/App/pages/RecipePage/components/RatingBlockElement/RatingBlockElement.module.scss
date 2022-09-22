@@ -4,12 +4,12 @@
   display: flex;
   gap: 10px;
   font-weight: 400;
-  font-size: $font-normal;
   line-height: 19px;
   letter-spacing: 0.5px;
-  color: $gray;
+  color: rgb(133, 131, 127);
   mix-blend-mode: normal;
   span {
     opacity: 0.3;
+    font-size: 25px;
   }
 }
