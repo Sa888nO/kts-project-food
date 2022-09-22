@@ -4,14 +4,18 @@
   min-width: 375px;
   display: flex;
   justify-content: center;
+  border-radius: 30px;
 }
 .recipe {
+  border-radius: 30px;
+  background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
   width: 100%;
-  padding: 10px;
-  max-width: 800px;
+  max-width: 600px;
   display: flex;
+  padding: 20px 20px;
+  margin: 10px 0;
   justify-content: center;
-  align-items: center;
+
   flex-direction: column;
   &_title {
     padding-top: 20px;

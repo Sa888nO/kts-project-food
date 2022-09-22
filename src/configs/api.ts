@@ -12,4 +12,4 @@ const KEYS = {
   prodKey: "5c82bafc08c34181ad80adc9cf04fbf0",
 };
 
-export const CURRENT_KEY = KEYS.key3;
+export const CURRENT_KEY = KEYS.prodKey;
