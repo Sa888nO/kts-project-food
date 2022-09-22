@@ -8,8 +8,12 @@
   text-align: left;
   height: 60px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .click {
   background: linear-gradient(98.81deg, #ffe7e7 -0.82%, #fcb1b1 101.53%);
+}
+.option:hover {
+  background: linear-gradient(98.81deg, #fff1f1 -0.82%, #fdc8c8 101.53%);
 }

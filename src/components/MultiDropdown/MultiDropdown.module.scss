@@ -34,3 +34,7 @@
   z-index: 1;
   background: linear-gradient(98.81deg, $milk -0.82%, $milk-pink 101.53%);
 }
+
+.multi-down:hover {
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}

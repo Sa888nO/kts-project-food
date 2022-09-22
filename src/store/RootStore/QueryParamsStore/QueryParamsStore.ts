@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, runInAction } from "mobx";
+import { action, keys, makeObservable, observable, runInAction } from "mobx";
 import { Option } from "types";
 
 type PrivateFields = "_params";
@@ -9,9 +9,9 @@ class QueryParamsStore {
     recipeItems: number;
     options: Option[];
   } = {
-    search: "",
+    search: localStorage.getItem("search") ?? "",
     recipeItems: 10,
-    options: [],
+    options: this.getLocalOptions() ?? [],
   };
 
   constructor() {
@@ -37,10 +37,17 @@ class QueryParamsStore {
     queryString = this._params.options.map((op) => op.value);
     return queryString.join(", ");
   }
-
+  getLocalOptions() {
+    let localop = localStorage.getItem("options") ?? "";
+    let localOptions: Option[] = JSON.parse(localop).map(
+      (item: Option) => item
+    );
+    return localOptions;
+  }
   setSearch(search: string) {
     runInAction(() => {
       this._params.search = search;
+      localStorage.setItem("search", search);
     });
   }
   moreItems() {
@@ -59,6 +66,7 @@ class QueryParamsStore {
       } else {
         this._params.options = [...this._params.options, option];
       }
+      localStorage.setItem("options", JSON.stringify(this._params.options));
     });
   }
 }
