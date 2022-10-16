@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import NotFoundPage from "./pages/NotFoundPage";
 import RecipePage from "./pages/RecipePage";
 import RecipesPage from "./pages/RecipesPage";
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/recipe">
           <Route path=":id" element={<RecipePage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

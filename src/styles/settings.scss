@@ -1,3 +1,4 @@
+@import "./variables.scss";
 body {
   padding: 0;
   margin: 0;
@@ -19,14 +20,92 @@ code {
   font-size: 12px;
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $milk-pink;
+}
+
+/* для Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $milk-pink;
+  border-radius: 20px;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+code,
+em,
+img,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+b,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+main,
+canvas,
+embed,
+footer,
+header,
+nav,
+section,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
 a {
   text-decoration: none;
-  color: black;
-  background-color: transparent;
-  &:hover {
-    text-decoration: none;
-  }
+  color: inherit;
 }
+
 @font-face {
   font-family: "Avenir";
   src: local("Avenir"), url("./../assets/Avenir.woff") format("woff");
@@ -39,4 +118,10 @@ button {
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0px auto;
+  padding: 0px 15px;
 }
