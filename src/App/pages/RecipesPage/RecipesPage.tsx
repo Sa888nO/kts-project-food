@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from "react";
+
 import background from "assets/images/BACKGROUND2.png";
 import Card from "components/Card";
 import Input from "components/Input";
 import Loader from "components/Loader";
 import MultiDropdown from "components/MultiDropdown";
+import useDebounce from "hooks/useDebounce";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
@@ -12,9 +15,17 @@ import rootStore from "store/RootStore/instance";
 import styles from "./RecipesPage.module.scss";
 
 const RecipesPage = () => {
-  if (RecipesStore.recipesList.length === 0) {
-    RecipesStore.getRecipes();
-  }
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      RecipesStore.getRecipes();
+    }
+  }, [debouncedSearchTerm]);
+
+  // if (RecipesStore.recipesList.length === 0) {
+  //   RecipesStore.getRecipes();
+  // }
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
@@ -23,8 +34,9 @@ const RecipesPage = () => {
           <Input
             value={rootStore.query.getSearch()}
             onChange={(value) => {
+              setSearchTerm(value);
               rootStore.query.setSearch(value);
-              RecipesStore.getRecipes();
+              // RecipesStore.getRecipes();
             }}
           />
           <MultiDropdown value={rootStore.query.getOption()} />

@@ -93,6 +93,7 @@ module.exports = {
       store: path.join(srcPath, "store"),
       assets: path.join(srcPath, "assets"),
       types: path.join(srcPath, "types"),
+      hooks: path.join(srcPath, "hooks"),
     },
   },
   devServer: {
