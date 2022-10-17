@@ -1,7 +1,7 @@
+import classNames from "classnames";
 import styled from "styled-components";
 
 const SearchInput = styled.input`
-  @import "styles/variables.scss";
   border: 0;
   height: 60px;
   width: 100%;
@@ -35,6 +35,9 @@ const Input: React.FC<InputProps> = ({
       type="text"
       placeholder={"Search"}
       {...props}
+      // className={classNames(styles.input, props.className, {
+      //   input_disabled: dis,
+      // })}
       disabled={dis}
       onChange={(e) => {
         onChange(e.target.value);
