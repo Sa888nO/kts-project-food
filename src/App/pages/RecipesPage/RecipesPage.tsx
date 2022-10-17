@@ -22,7 +22,8 @@ const RecipesPage = () => {
       RecipesStore.getRecipes();
     }
   }, [debouncedSearchTerm]);
-
+  // eslint-disable-next-line no-console
+  console.log("refINIT");
   // if (RecipesStore.recipesList.length === 0) {
   //   RecipesStore.getRecipes();
   // }
