@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import InfoBlock from "./components/InfoBlock";
 import { InfoBlockProps } from "./components/InfoBlock/InfoBlock";
 import LikesBlock from "./components/LikesBlock";
